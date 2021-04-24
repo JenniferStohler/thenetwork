@@ -10,12 +10,12 @@ class PostsService {
 
   async getActive(id) {
     const res = await api.get('api/posts/' + id)
-    AppState.activePost = res.data
+    AppState.activePost = res.data.posts
   }
 
   async getMyPosts() {
     const res = await api.get(`api/posts?creatorId=${AppState.account.id}`)
-    AppState.myPosts = res.data
+    AppState.myPosts = res.data.posts
   }
 
   async getByProfileId(id) {
@@ -26,7 +26,7 @@ class PostsService {
   async create(data) {
     const res = await api.post('api/posts', data)
     router.push({ name: 'PostDetails', params: { id: res.data.id } })
-    // this.getAll()
+    this.getAll()
   }
 
   async addPost(postId) {

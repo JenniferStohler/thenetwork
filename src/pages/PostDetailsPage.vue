@@ -40,6 +40,16 @@
                    v-model="state.newPost.imgUrl"
                    required
             >
+            <label for="body">Comment</label>
+            <input type="text"
+                   class="form-control"
+                   name="body"
+                   id="body"
+                   aria-describedby="helpId"
+                   placeholder="Comment..."
+                   v-model="state.newPost.body"
+                   required
+            >
           </div>
           <button class="btn btn-success" type="submit">
             Add Photo

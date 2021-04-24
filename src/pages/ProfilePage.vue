@@ -33,6 +33,16 @@
                placeholder="Image Url..."
                v-model="state.newPost.imgUrl"
         >
+        <label for="body">Comment</label>
+        <input type="text"
+               class="form-control"
+               name="body"
+               id="body"
+               aria-describedby="helpId"
+               placeholder="Comment..."
+               v-model="state.newPost.body"
+               required
+        >
       </div>
       <button type="submit" class="btn btn-success">
         Create
