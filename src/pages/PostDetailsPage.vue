@@ -51,17 +51,14 @@
                    required
             >
           </div>
-          <button class="btn btn-success" type="submit">
-            Add Photo
-          </button>
+          <div class="col-3" v-for="post in state.post.posts" :key="post.id">
+            <!-- <img class="w-100" :src="post.imgUrl" alt=""> -->
+            <p>{{ post.title }}</p>
+            <button v-if="state.account.id === state.post.creatorId">
+              Delete
+            </button>
+          </div>
         </form>
-      </div>
-      <div class="col-3" v-for="photo in state.post.photos" :key="photo.id">
-        <img class="w-100" :src="photo.imgUrl" alt="">
-        <p>{{ photo.title }}</p>
-        <button v-if="state.account.id === state.post.creatorId">
-          Delete
-        </button>
       </div>
     </div>
   </div>

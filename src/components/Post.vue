@@ -1,5 +1,5 @@
 <template>
-  <div class="post-photo col-md-3">
+  <div class="post col-md-3">
     <div class=" position-relative">
       <router-link :to="{name: 'Profile', params: {id: post.creator.id}}">
         <img :src="post.imgUrl">
