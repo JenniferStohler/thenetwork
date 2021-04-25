@@ -14,12 +14,13 @@
 
 <script>
 export default {
-  name: 'Post',
+  name: 'Commercials',
   props: {
     post: {
       type: Object,
       required: true
     }
+
   },
   setup() {
     return {}

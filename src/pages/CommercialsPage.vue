@@ -5,23 +5,23 @@
       <span class="mx-2 text-white">Gwen Stohler</span>
     </h1>
   </div>
-  <Post v-for="post in state.posts" :key="post.id" :post="post" />
+  <Commercials v-for="commercial in state.commercials" :key="commercial.id" :commercial="commercial" />
 </template>
 
 <script>
 import { onMounted, reactive, computed } from 'vue'
 import Notification from '../utils/Notification'
-import { postsService } from '../services/PostsService'
+import { commercialsService } from '../services/CommercialsService'
 import { AppState } from '../AppState'
 export default {
-  name: 'Home',
+  name: 'Commercials',
   setup() {
     const state = reactive({
-      posts: computed(() => AppState.posts)
+      posts: computed(() => AppState.commercials)
     })
     onMounted(async() => {
       try {
-        await postsService.getAll()
+        await commercialsService.getAll()
       } catch (error) {
         Notification.toast('Error: ' + error, 'error')
       }

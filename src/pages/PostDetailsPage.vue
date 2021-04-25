@@ -53,7 +53,7 @@
           </div>
           <div class="col-3" v-for="post in state.post.posts" :key="post.id">
             <!-- <img class="w-100" :src="post.imgUrl" alt=""> -->
-            <p>{{ post.title }}</p>
+            <p>{{ post.body }}</p>
             <button v-if="state.account.id === state.post.creatorId">
               Delete
             </button>
