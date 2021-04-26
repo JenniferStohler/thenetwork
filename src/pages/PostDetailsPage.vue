@@ -7,29 +7,20 @@
           <router-link :to="{name: 'Account', params: {id: state.post.creator.id}}">
             <img class="rounded-circle" :src="state.post.creator.picture" alt="Creator image">
           </router-link>
-          <div class="ml-3 d-flex flex-column justify-content-center">
+          <div class=" overflow ml-3 d-flex flex-column justify-content-center">
             <h3 class="text-secondary">
               {{ state.post.creator.name }}
             </h3>
             <h3 class="m-0">
-              {{ state.post.title }}
+              {{ state.post.body }}
             </h3>
           </div>
         </div>
       </div>
       <!-- The v-if here prevents people who are not the creator from accessing the form within this div -->
       <div class="col-12" v-if="state.account.id === state.post.creatorId">
-        <form @submit.prevent="addPost">
+        <form @submit.prevent="getAll()">
           <div class="form-group">
-            <label for="title">Title</label>
-            <input type="text"
-                   class="form-control"
-                   name="title"
-                   id="title"
-                   aria-describedby="helpId"
-                   placeholder="Title..."
-                   v-model="state.newPost.title"
-            >
             <label for="imgUrl">Image Url</label>
             <input type="text"
                    class="form-control"
@@ -120,5 +111,9 @@ export default {
   img {
     width: 100px;
   }
+}
+.overflow{
+  overflow:hidden;
+  white-space: nowrap;
 }
 </style>

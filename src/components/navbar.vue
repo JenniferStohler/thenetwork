@@ -32,6 +32,10 @@
             About
           </router-link>
         </li>
+        <li>
+          <input type="text">
+          <button>Search</button>
+        </li>
       </ul>
       <span class="navbar-text">
         <button

@@ -4,9 +4,9 @@
       <div class="d-flex">
         <img class="rounded-circle" :src="state.activeProfile.picture" alt="Creator image">
         <div class="ml-3 d-flex flex-column justify-content-center">
-          <h3 class="text-dark">
+          <h4 class="text-dark">
             {{ state.activeProfile.name }}
-          </h3>
+          </h4>
         </div>
         <div class="col">
           <h3 class="m-0">
