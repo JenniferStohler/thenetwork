@@ -1,8 +1,8 @@
 <template>
   <!-- Adding the v-if prevents the page from trying to load before the data returns -->
-  <div class="project-details container" v-if="state.post">
-    <div class="row mt-3">
-      <div class="col-12 post-header">
+  <div class="post-details container flex-grow text-wrap" v-if="state.post">
+    <div class="row mt-5 ml-3">
+      <div class="col-12 post">
         <div class="d-flex">
           <router-link :to="{name: 'Account', params: {id: state.post.creator.id}}">
             <img class="rounded-circle" :src="state.post.creator.picture" alt="Creator image">
@@ -52,8 +52,12 @@
             >
           </div>
           <div class="col-3" v-for="post in state.post.posts" :key="post.id">
-            <!-- <img class="w-100" :src="post.imgUrl" alt=""> -->
-            <p>{{ post.body }}</p>
+            <div class="card">
+              <div class="card-body">
+                <!-- <img class="w-100" :src="post.imgUrl" alt=""> -->
+                <p>{{ post.body }}</p>
+              </div>
+            </div>
             <button v-if="state.account.id === state.post.creatorId">
               Delete
             </button>

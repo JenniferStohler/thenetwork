@@ -3,14 +3,14 @@ import router from '../router'
 import { api } from './AxiosService'
 
 class CommercialsService {
-  async getAll() {
+  async getCommercials() {
     const res = await api.get('api/ads')
-    AppState.commercials = res.data.commercials
+    AppState.commercials = res.data
   }
 
   async create(data) {
     const res = await api.post('api/ads', data)
-    router.push({ name: 'Commercials', params: { id: res.data.id } })
+    router.push({ name: 'Commercials', params: { id: res.data } })
     this.getAll()
   }
 }

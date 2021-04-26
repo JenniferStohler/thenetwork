@@ -5,7 +5,7 @@
   <main>
     <div class="row">
       <router-view />
-      <div class="col-md-6">
+      <div class="col-md-12">
       </div>
     </div>
   </main>

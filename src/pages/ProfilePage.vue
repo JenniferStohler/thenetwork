@@ -1,53 +1,50 @@
 <template>
   <div class="about text-center" v-if="state.activeProfile">
-    <div class="col-12 project-header">
+    <div class="col-12 post">
       <div class="d-flex">
         <img class="rounded-circle" :src="state.activeProfile.picture" alt="Creator image">
         <div class="ml-3 d-flex flex-column justify-content-center">
-          <h3 class="text-secondary">
+          <h3 class="text-dark">
             {{ state.activeProfile.name }}
           </h3>
+        </div>
+        <div class="col">
           <h3 class="m-0">
             Posts: {{ state.activePosts.length }}
           </h3>
         </div>
       </div>
+      <form @submit.prevent="create" v-if="state.account.id== route.params.id && state.activeProfile.id === state.account.id">
+        <div class="form-group">
+          <div class="card">
+            <div class="card-body">
+              <label for="imgUrl">Image</label>
+              <input type="text"
+                     class="form-control"
+                     name="imgUrl"
+                     id="imgUrl"
+                     aria-describedby="helpId"
+                     placeholder="Image Url..."
+                     v-model="state.newPost.imgUrl"
+              >
+              <label for="body">Comment</label>
+              <input type="text"
+                     class="form-control"
+                     name="body"
+                     id="body"
+                     aria-describedby="helpId"
+                     placeholder="Comment..."
+                     v-model="state.newPost.body"
+                     required
+              >
+            </div>
+            <button type="submit" class="btn btn-success">
+              Create
+            </button>
+          </div>
+        </div>
+      </form>
     </div>
-    <form @submit.prevent="create" v-if="state.account.id== route.params.id && state.activeProfile.id === state.account.id">
-      <div class="form-group">
-        <label for="title">Title</label>
-        <input type="text"
-               class="form-control"
-               name="title"
-               id="title"
-               aria-describedby="helpId"
-               placeholder="Title..."
-               v-model="state.newPost.title"
-        >
-        <label for="imgUrl">Image</label>
-        <input type="text"
-               class="form-control"
-               name="imgUrl"
-               id="imgUrl"
-               aria-describedby="helpId"
-               placeholder="Image Url..."
-               v-model="state.newPost.imgUrl"
-        >
-        <label for="body">Comment</label>
-        <input type="text"
-               class="form-control"
-               name="body"
-               id="body"
-               aria-describedby="helpId"
-               placeholder="Comment..."
-               v-model="state.newPost.body"
-               required
-        >
-      </div>
-      <button type="submit" class="btn btn-success">
-        Create
-      </button>
-    </form>
     <h2>My Posts</h2>
     <div class="row">
       <Post v-for="post in state.activePosts" :key="post.id" :post="post" />

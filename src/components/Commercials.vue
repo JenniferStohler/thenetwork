@@ -13,18 +13,28 @@
 </template>
 
 <script>
+import { computed, onMounted, reactive } from 'vue'
+import { commercialsService } from '../services/CommercialsService'
+import { AppState } from '../AppState'
+import Notification from '../utils/Notification'
 export default {
   name: 'Commercials',
-  props: {
-    post: {
-      type: Object,
-      required: true
-    }
-
-  },
   setup() {
-    return {}
-  }
+    const state = reactive({
+      commercials: computed(() => AppState.commercials)
+    })
+    onMounted(async() => {
+      try {
+        await commercialsService.getCommercials()
+      } catch (error) {
+        Notification.toast('Error: ' + error, 'error')
+      }
+    })
+    return {
+      state
+    }
+  },
+  commercials: {}
 }
 </script>
 
