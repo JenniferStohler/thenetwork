@@ -7,6 +7,9 @@
           <div class="text-wrap">
             {{ post.creator.name }}
             <div class="text-wrap">
+              {{ post.createdAt }}
+            </div>
+            <div class="text-wrap">
               {{ post.body }}
               <div class="mr-1 text-left">
                 <button type="btn btn-success" @click="like(id)">
