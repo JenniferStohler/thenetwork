@@ -1,5 +1,11 @@
 <template>
-  <img v-for="commercial in state.commercials" :key="commercial.title" :src="commercial.square" />
+  <div class="row justify-content-center">
+    <div class="images col-12 d-flex justify-content-center">
+      <div class="col-12">
+        <img v-for="commercial in state.commercials" :key="commercial.title" :src="commercial.square" />
+      </div>
+    </div>
+  </div>
   <Post v-for="post in state.posts" :key="post.id" :post="post" />
 </template>
 
@@ -38,6 +44,10 @@ export default {
   > img{
     height: 200px;
     width: 200px;
+  }
+  .images{
+    height: 50px;
+    width:50px
   }
 }
 </style>

@@ -4,7 +4,7 @@
     <div class="row mt-5 ml-3">
       <div class="col-12 post">
         <div class="d-flex">
-          <router-link :to="{name: 'Account', params: {id: state.post.creator.id}}">
+          <router-link :to="{name: 'Profile', params: {id: state.post.creator.id}}">
             <img class="rounded-circle" :src="state.post.creator.picture" alt="Creator image">
           </router-link>
           <div class=" overflow ml-3 d-flex flex-column justify-content-center">
@@ -75,7 +75,6 @@ export default {
     const state = reactive({
       post: {},
       project: computed(() => AppState.activePost),
-      // USER has a few bonus properties such as user.isAuthenticated
       user: computed(() => AppState.user),
       account: computed(() => AppState.account)
     })

@@ -29,7 +29,7 @@ class PostsService {
     console.log(res.data.id)
     // this.getAll()
   }
-  // eslint-disable-next-line lines-between-class-members
+
   async deletePost(id) {
     await api.delete('api/posts/' + id)
     AppState.posts = AppState.posts.filter(p => p.id !== id)
