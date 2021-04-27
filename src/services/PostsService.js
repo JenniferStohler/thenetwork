@@ -35,6 +35,12 @@ class PostsService {
     AppState.posts = AppState.posts.filter(p => p.id !== id)
   }
 
+  async likePost(id) {
+    const res = await api.post('api/posts' + id + '/like')
+    const post = AppState.posts.find(p => p.id === id)
+    post.likes = res.data.likes
+  }
+
   async addPost(postId) {
     await api.post(`api/posts/${postId}/`)
     this.getActive(postId)

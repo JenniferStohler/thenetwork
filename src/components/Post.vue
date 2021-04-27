@@ -12,11 +12,11 @@
             <div class="text-wrap">
               {{ post.body }}
               <div class="mr-1 text-left">
-                <button type="btn btn-success" @click="like(id)">
+                <button type="btn btn-success" @click="likePost(post.id)">
                   Like
                   {{ post.likes.length }}
                 </button>
-                <button type="btn btn-danger" @click="deletePost(id)">
+                <button type="btn btn-danger" @click="deletePost(post.id)">
                   Delete
                 </button>
               </div>
@@ -38,6 +38,8 @@
 </template>
 
 <script>
+
+import Notification from '../utils/Notification'
 import { postsService } from '../services/PostsService'
 export default {
   name: 'Post',
@@ -49,6 +51,13 @@ export default {
   },
   setup(props) {
     return {
+      async likePost() {
+        try {
+          postsService.likePost(props.post.id)
+        } catch (error) {
+          Notification.toast(error, 'error')
+        }
+      },
       async deletePost() {
         try {
           postsService.deletePost(props.post.id)
