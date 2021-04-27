@@ -29,7 +29,6 @@
                    aria-describedby="helpId"
                    placeholder="Image Url..."
                    v-model="state.newPost.imgUrl"
-                   required
             >
             <label for="body">Comment</label>
             <input type="text"
@@ -45,7 +44,7 @@
           <div class="col-3" v-for="post in state.post.posts" :key="post.id">
             <div class="card">
               <div class="card-body">
-                <!-- <img class="w-100" :src="post.imgUrl" alt=""> -->
+                <img class="w-100" :src="post.imgUrl" alt="">
                 <p>{{ post.body }}</p>
               </div>
             </div>
@@ -70,11 +69,11 @@ import { AppState } from '../AppState'
 import Notification from '../utils/Notification'
 
 export default {
-  name: 'PostDetails',
+  name: 'Post',
   setup() {
     const route = useRoute()
     const state = reactive({
-      newPost: {},
+      post: {},
       project: computed(() => AppState.activePost),
       // USER has a few bonus properties such as user.isAuthenticated
       user: computed(() => AppState.user),
@@ -93,8 +92,8 @@ export default {
       route,
       async addPost() {
         try {
-          await postsService.addPost(route.params.id, state.newPost)
-          state.newPost = {}
+          await postsService.addPost(route.params.id, state.post)
+          state.post = {}
           Notification.toast('Added Post', 'success')
         } catch (error) {
           Notification.toast('Error: ' + error, 'error')

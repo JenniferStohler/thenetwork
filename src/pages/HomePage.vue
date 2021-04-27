@@ -1,4 +1,5 @@
 <template>
+  <img v-for="commercial in state.commercials" :key="commercial.title" :src="commercial.square" />
   <Post v-for="post in state.posts" :key="post.id" :post="post" />
 </template>
 

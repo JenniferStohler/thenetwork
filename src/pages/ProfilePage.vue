@@ -14,7 +14,7 @@
           </h3>
         </div>
       </div>
-      <form @submit.prevent="create" v-if="state.account.id== route.params.id && state.activeProfile.id === state.account.id">
+      <form @submit.prevent="create" v-if="state.account.id == route.params.id && state.activeProfile.id === state.account.id">
         <div class="form-group">
           <div class="card">
             <div class="card-body">
